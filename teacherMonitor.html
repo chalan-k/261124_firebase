@@ -1,0 +1,113 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>교사 모니터링 | 우리 반 작은 미술관</title>
+  </head>
+  <body class="page-teacher">
+    <header class="site-header">
+      <a class="brand" href="./index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        우리 반 작은 미술관
+        <span class="brand-sub">교사 모니터링</span>
+      </a>
+      <a class="btn btn-ghost btn-small" href="./index.html">처음으로</a>
+    </header>
+
+    <main id="teacher-main" class="dashboard" hidden>
+      <!-- 왼쪽: 사용자 표시 + 필터 + 제출 목록 -->
+      <aside class="sidebar" aria-label="필터와 제출 목록">
+        <section class="side-card teacher-card">
+          <p class="side-label">접속한 교사</p>
+          <strong id="teacher-name" class="teacher-name"></strong>
+          <span id="teacher-email" class="teacher-email"></span>
+          <button id="logout-button" class="link-button" type="button">로그아웃</button>
+        </section>
+
+        <section class="side-card" aria-labelledby="date-title">
+          <div class="side-head">
+            <h2 id="date-title" class="side-title">날짜 선택</h2>
+            <div class="side-tools">
+              <button id="select-all-dates" class="tool-button" type="button">전체</button>
+              <button id="clear-dates" class="tool-button" type="button">해제</button>
+            </div>
+          </div>
+          <ul id="date-list" class="filter-list"></ul>
+          <p id="date-empty" class="side-empty" hidden>아직 제출된 감상이 없어요.</p>
+        </section>
+
+        <section class="side-card" aria-labelledby="art-filter-title">
+          <div class="side-head">
+            <h2 id="art-filter-title" class="side-title">작품 선택</h2>
+            <div class="side-tools">
+              <button id="select-all-arts" class="tool-button" type="button">전체</button>
+              <button id="clear-arts" class="tool-button" type="button">해제</button>
+            </div>
+          </div>
+          <ul id="art-filter-list" class="filter-list"></ul>
+        </section>
+
+        <section class="side-card side-card-grow" aria-labelledby="record-title">
+          <div class="side-head">
+            <h2 id="record-title" class="side-title">제출 목록</h2>
+            <span id="record-count" class="count-badge">0건</span>
+          </div>
+          <ul id="record-list" class="record-list"></ul>
+          <p id="record-empty" class="side-empty">날짜를 선택하면 학생 목록이 나타나요.</p>
+        </section>
+      </aside>
+
+      <!-- 가운데: 대화 내용 -->
+      <section class="board conversation" aria-labelledby="conversation-title">
+        <div class="board-head">
+          <h2 id="conversation-title" class="board-title">대화 내용</h2>
+          <p id="conversation-meta" class="board-meta"></p>
+        </div>
+        <ol id="conversation-log" class="conversation-log"></ol>
+        <p id="conversation-empty" class="board-empty">왼쪽 목록에서 학생을 선택해 주세요.</p>
+      </section>
+
+      <!-- 오른쪽: 고른 작품 + 감상 문장 -->
+      <section class="board artwork-board" aria-labelledby="artwork-title">
+        <div class="board-head">
+          <h2 id="artwork-title" class="board-title">고른 작품과 감상</h2>
+        </div>
+        <p id="artwork-empty" class="board-empty">학생을 선택하면 작품과 감상 문장이 보여요.</p>
+
+        <div id="artwork-detail" class="artwork-detail" hidden>
+          <figure class="detail-figure">
+            <div class="detail-frame">
+              <img id="detail-image" class="detail-image" alt="" />
+            </div>
+            <figcaption class="detail-caption">
+              <strong id="detail-title"></strong>
+              <span id="detail-artist"></span>
+            </figcaption>
+          </figure>
+
+          <div class="detail-reflection">
+            <p class="side-label">오늘의 감상 한 문장</p>
+            <blockquote id="detail-reflection" class="reflection-quote"></blockquote>
+          </div>
+
+          <dl class="detail-stats">
+            <div>
+              <dt>대화 시간</dt>
+              <dd id="stat-chat"></dd>
+            </div>
+            <div>
+              <dt>문장 쓴 시간</dt>
+              <dd id="stat-writing"></dd>
+            </div>
+          </dl>
+        </div>
+      </section>
+    </main>
+
+    <p id="dashboard-error" class="dashboard-error" role="alert" hidden></p>
+
+    <script type="module" src="/src/admin.js"></script>
+  </body>
+</html>

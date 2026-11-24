@@ -1,0 +1,93 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>우리 반 작은 미술관</title>
+  </head>
+  <body class="page-home">
+    <header class="site-header">
+      <a class="brand" href="./index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        우리 반 작은 미술관
+      </a>
+    </header>
+
+    <main class="home">
+      <section class="hero">
+        <p class="hero-kicker">오늘의 미술 감상 시간</p>
+        <h1 class="hero-title">어서 오세요,<br />작은 미술관에!</h1>
+        <p class="hero-text">
+          천천히 걸으며 작품을 둘러보고,<br />
+          마음에 드는 작품과 이야기를 나누어 보아요.
+        </p>
+      </section>
+
+      <section class="gallery-wall" aria-label="오늘 만날 작품 세 점">
+        <figure class="frame">
+          <div class="canvas canvas-1" aria-hidden="true"></div>
+          <figcaption class="plaque">작품 하나</figcaption>
+        </figure>
+        <figure class="frame frame-center">
+          <div class="canvas canvas-2" aria-hidden="true"></div>
+          <figcaption class="plaque">작품 둘</figcaption>
+        </figure>
+        <figure class="frame">
+          <div class="canvas canvas-3" aria-hidden="true"></div>
+          <figcaption class="plaque">작품 셋</figcaption>
+        </figure>
+      </section>
+
+      <section class="steps" aria-labelledby="steps-title">
+        <h2 id="steps-title" class="section-title">이렇게 감상해요</h2>
+        <ol class="step-list">
+          <li class="step-card">
+            <span class="step-num">1</span>
+            <h3>작품 고르기</h3>
+            <p>세 작품 중에서 마음에 드는 작품을 하나 골라요.</p>
+          </li>
+          <li class="step-card">
+            <span class="step-num">2</span>
+            <h3>이야기 나누기</h3>
+            <p>작품을 보며 무엇이 보이는지, 어떤 느낌이 드는지 이야기해요.</p>
+          </li>
+          <li class="step-card">
+            <span class="step-num">3</span>
+            <h3>한 문장 감상</h3>
+            <p>오늘의 감상을 한 문장으로 정리해서 남겨요.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="entry" aria-label="들어가기">
+        <!-- 로그인 상태 확인 중 -->
+        <p id="auth-loading" class="entry-note">잠시만 기다려 주세요...</p>
+
+        <!-- 로그인 전 -->
+        <div id="signed-out" class="entry-group" hidden>
+          <button id="login-button" class="btn btn-google btn-large" type="button">
+            <span class="google-mark" aria-hidden="true">G</span>
+            Google로 로그인
+          </button>
+          <p class="entry-note">Google 계정으로 로그인한 뒤 감상을 시작해요.</p>
+          <p id="auth-error" class="auth-error" role="alert"></p>
+        </div>
+
+        <!-- 로그인 후 -->
+        <div id="signed-in" class="entry-group" hidden>
+          <p class="welcome"><strong id="user-name"></strong> 님, 반가워요!</p>
+          <a class="btn btn-primary btn-large" href="./student.html">감상 시작하기</a>
+          <a id="teacher-button" class="btn btn-ghost" href="./teacherMonitor.html" hidden>교사 모니터링</a>
+          <button id="logout-button" class="link-button" type="button">로그아웃</button>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>작품은 눈으로만 감상해요. 천천히, 조용히, 즐겁게!</p>
+    </footer>
+
+    <script type="module" src="/src/index.js"></script>
+  </body>
+</html>

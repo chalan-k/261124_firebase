@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>작품 감상하기 | 우리 반 작은 미술관</title>
+  </head>
+  <body class="page-student">
+    <header class="site-header">
+      <a class="brand" href="./index.html">
+        <span class="brand-mark" aria-hidden="true"></span>
+        우리 반 작은 미술관
+      </a>
+      <div class="header-right">
+        <div class="user-box" aria-label="접속한 사용자">
+          <strong id="user-name" class="user-name"></strong>
+          <span id="user-email" class="user-email"></span>
+        </div>
+        <a class="btn btn-ghost btn-small" href="./index.html">처음으로</a>
+      </div>
+    </header>
+
+    <main class="page-main">
+      <!-- 로그인 확인 중 -->
+      <p id="auth-loading" class="loading-text">로그인 정보를 확인하고 있어요...</p>
+
+      <!-- 1단계: OpenAI API Key 입력 -->
+      <section id="key-section" class="panel key-panel" hidden>
+        <h1 class="page-title">감상 도우미 준비하기</h1>
+        <p class="panel-text">선생님께 받은 OpenAI API Key를 입력해 주세요.</p>
+        <form id="key-form" class="key-form">
+          <label class="sr-only" for="key-input">OpenAI API Key</label>
+          <input
+            id="key-input"
+            class="text-input"
+            type="password"
+            placeholder="sk-로 시작하는 키"
+            autocomplete="off"
+            spellcheck="false"
+            required
+          />
+          <button id="key-submit" class="btn btn-primary" type="submit">확인하기</button>
+        </form>
+        <p id="key-message" class="form-message" role="status" aria-live="polite"></p>
+      </section>
+
+      <!-- 2단계: 작품 고르기 -->
+      <section id="pick-section" class="pick" hidden>
+        <h1 class="page-title">마음에 드는 작품을 하나 골라요</h1>
+        <p class="panel-text">작품을 천천히 둘러보고, 가장 끌리는 작품을 눌러 보세요.</p>
+        <ul id="artwork-list" class="artwork-list"></ul>
+      </section>
+
+      <!-- 3단계: 작품 보며 대화하기 -->
+      <section id="chat-section" class="chat-layout" hidden>
+        <figure class="viewer">
+          <div class="viewer-frame">
+            <img id="viewer-image" class="viewer-image" alt="" />
+          </div>
+          <figcaption class="viewer-caption">
+            <strong id="viewer-title"></strong>
+            <span id="viewer-artist"></span>
+          </figcaption>
+          <button id="change-artwork" class="btn btn-ghost btn-small" type="button">
+            다른 작품 고르기
+          </button>
+        </figure>
+
+        <div class="chat-panel">
+          <div class="chat-head">
+            <h2>감상 도우미와 이야기 나누기</h2>
+            <p id="turn-counter" class="turn-counter"></p>
+          </div>
+
+          <ol id="chat-log" class="chat-log" aria-live="polite"></ol>
+
+          <form id="chat-form" class="chat-form">
+            <label class="sr-only" for="chat-input">나의 대답</label>
+            <textarea
+              id="chat-input"
+              class="text-input chat-input"
+              rows="2"
+              maxlength="300"
+              placeholder="여기에 생각을 적어 보세요"
+              required
+            ></textarea>
+            <button id="chat-send" class="btn btn-primary" type="submit">보내기</button>
+          </form>
+
+          <div class="chat-actions">
+            <p id="chat-hint" class="chat-hint"></p>
+            <button id="chat-end" class="btn btn-ghost" type="button" disabled>대화 끝내기</button>
+          </div>
+
+          <!-- 4단계: 한 문장 감상 쓰기 -->
+          <form id="reflection-form" class="reflection" hidden>
+            <label class="reflection-label" for="reflection-input">
+              오늘의 감상을 한 문장으로 정리해 볼까요?
+            </label>
+            <textarea
+              id="reflection-input"
+              class="text-input"
+              rows="2"
+              maxlength="120"
+              placeholder="예) 이 작품을 보니 ~해서 ~한 느낌이 들었다."
+              required
+            ></textarea>
+            <div class="reflection-foot">
+              <span id="reflection-count" class="char-count">0 / 120</span>
+              <button id="reflection-submit" class="btn btn-primary" type="submit">제출하기</button>
+            </div>
+            <p id="reflection-message" class="form-message" role="status" aria-live="polite"></p>
+          </form>
+
+          <!-- 5단계: 제출 완료 -->
+          <div id="done-box" class="done-box" role="status" hidden>
+            <p class="done-title">제출했어요!</p>
+            <p class="done-text">작품을 자세히 보고 생각을 나누어 주어서 고마워요.</p>
+            <a class="btn btn-ghost btn-small" href="./index.html">처음으로 돌아가기</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script type="module" src="/src/main.js"></script>
+  </body>
+</html>
